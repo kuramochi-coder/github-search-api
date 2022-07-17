@@ -3,10 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Hello World Simple App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.1/cyborg/bootstrap.min.css"
+      integrity="sha512-FRIUlNrWCABgd2R533FVfrSoeEbFOtuh1X7NbiNHw+7Nb5whngDAkZ9V4VPNx1w9CQZ9LIWoeymUdM6mcDdSOQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>GitHub Search App</title>
   </head>
   <body>
-    <div>Hello World!</div>
+    <div class="container mt-5"></div>
+    <div class="row">
+      <div class="col-md-6 m-auto">
+        <h3 class="text-center mb-3">
+          <i class="fab fa-github"></i> GitHub Search
+        </h3>
+        <div class="form-group flex">
+            <label for="select" class="form-label">Select</label>
+            <select class="form-select" id="select">
+              <option>Code</option>
+              <option>Commits</option>
+              <option>Issues</option>
+              <option>Labels</option>
+              <option>Repositories</option>
+              <option>Topics</option>
+              <option>Users</option>
+            </select>
+          <input
+            class="form-control form-control-lg"
+            id="search"
+            type="text"
+            placeholder="Search..."
+          />
+          <button class="btn btn-primary" type="submit">Search</button>
+          </div>
+        <div class="mt-5" id="results-list"></div>
+      </div>
+    </div>
+    <script type="module" src="index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </body>
 </html>
