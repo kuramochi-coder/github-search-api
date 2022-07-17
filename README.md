@@ -5,6 +5,7 @@ This is a search app calling on GitHub's search API.
 ## Installation & Start-Up
 
 Use the node package manager [npm](https://www.npmjs.com/) to install the required packages and start the application.
+Update GitHub personal access token.
 
 ```bash
 npm ci
