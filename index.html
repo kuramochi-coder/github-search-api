@@ -26,25 +26,27 @@
         <h3 class="text-center mb-3">
           <i class="fab fa-github"></i> GitHub Search
         </h3>
-        <div class="form-group flex">
-            <label for="select" class="form-label">Select</label>
-            <select class="form-select" id="select">
-              <option>Code</option>
-              <option>Commits</option>
-              <option>Issues</option>
-              <option>Labels</option>
-              <option>Repositories</option>
-              <option>Topics</option>
-              <option>Users</option>
-            </select>
+        <form class="form-group flex" id="form">
+          <label for="select" class="form-label">Select</label>
+          <select class="form-select" id="select">
+            <option>Code</option>
+            <option>Commits</option>
+            <option>Issues</option>
+            <option>Labels</option>
+            <option>Repositories</option>
+            <option>Topics</option>
+            <option>Users</option>
+          </select>
           <input
             class="form-control form-control-lg"
             id="search"
             type="text"
             placeholder="Search..."
           />
-          <button class="btn btn-primary" type="submit">Search</button>
-          </div>
+          <button class="btn btn-primary" type="submit">
+            Search
+          </button>
+        </form>
         <div class="mt-5" id="results-list"></div>
       </div>
     </div>

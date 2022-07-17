@@ -1,5 +1,6 @@
 const search = document.getElementById("search");
 const resultsList = document.getElementById("results-list");
+const form = document.getElementById("form")
 const select = document.getElementById("select");
 let optionSelected = "Code";
 const gitHubBaseUrl = "https://api.github.com";
@@ -220,8 +221,8 @@ const outputHtml = (matches) => {
   }
 };
 
-search.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
+search.addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
     searchGithub(search.value);
   }
 });
@@ -229,3 +230,8 @@ search.addEventListener("keypress", (e) => {
 select.addEventListener("input", () => {
   optionSelected = select.value;
 });
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault()
+  searchGithub(search.value);
+})
