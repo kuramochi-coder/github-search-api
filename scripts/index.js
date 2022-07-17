@@ -1,6 +1,7 @@
 const search = document.getElementById("search");
 const resultsList = document.getElementById("results-list");
-const form = document.getElementById("form")
+const form = document.getElementById("form");
+const container = document.getElementById("progress-container");
 const select = document.getElementById("select");
 let optionSelected = "Code";
 const gitHubBaseUrl = "https://api.github.com";
@@ -67,11 +68,6 @@ function githubSearchApiClient() {
 // Search GitHub using the search api.
 const searchGithub = async (searchText) => {
   try {
-    // const res = await fetch("../data/states.json");
-    // const searchResults = await res.json();
-    // const res2 = axios.get('https://api.github.com/search/code')
-    // const res = await fetch('https://api.github.com/search/code')
-
     switch (optionSelected) {
       case SearchOptions.CODE:
         apiSelected = SearchApi.CODE;
@@ -103,9 +99,10 @@ const searchGithub = async (searchText) => {
       default:
         break;
     }
-    // const res = await fetch(apiSelected);
+
     let matches;
     if (searchText.length > 0) {
+      container.classList.add("progress");
       const res = await axiosClient.get(`${apiSelected}?q=${searchText}`);
 
       const searchResults = res.data.items;
@@ -132,6 +129,7 @@ const searchGithub = async (searchText) => {
       });
 
       outputHtml(matches);
+      container.classList.remove("progress");
     } else {
       matches = [];
       resultsList.innerHTML = "";
@@ -232,6 +230,6 @@ select.addEventListener("input", () => {
 });
 
 form.addEventListener("submit", (event) => {
-  event.preventDefault()
+  event.preventDefault();
   searchGithub(search.value);
-})
+});

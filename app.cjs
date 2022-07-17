@@ -7,6 +7,7 @@ app.use(express.json());
 
 app.use(express.static('scripts'));
 app.use('/data', express.static('data'));
+app.use('/css', express.static('css'));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, `./index.html`));
