@@ -5,7 +5,7 @@ const container = document.getElementById("progress-container");
 const select = document.getElementById("select");
 let optionSelected = "Code";
 const gitHubBaseUrl = "https://api.github.com";
-const accessToken = "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";
+const accessToken = "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";
 let apiSelected;
 
 const SearchOptions = {
@@ -113,7 +113,7 @@ const searchGithub = async (searchText) => {
 
         switch (optionSelected) {
           case SearchOptions.COMMITS:
-            return result.message.match(regex);
+            return result.commit.message.match(regex);
 
           case SearchOptions.ISSUES:
             return result.title.match(regex);
@@ -161,7 +161,7 @@ const outputHtml = (matches) => {
           .map(
             (match) =>
               `<div class="card card-body mb-1"> 
-                    <h4>${match.message} (${match.commit.author.name})</h4>
+                    <h4>${match.commit.message} (${match.commit.author.name})</h4>
                     <a target="_blank" href="${match.html_url}">${match.html_url}</a>
                   </div>`
           )
