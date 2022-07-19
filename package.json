@@ -2,11 +2,10 @@
   "name": "my-coding-env",
   "version": "1.0.0",
   "description": "coding env for technical tests",
-  "type": "module",
-  "main": "app.cjs",
+  "main": "app.js",
   "scripts": {
     "test": "npx jest",
-    "start": "nodemon app.cjs"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +18,7 @@
   },
   "homepage": "https://github.com/kuramochi-coder/my-coding-env#readme",
   "dependencies": {
+    "axios": "^0.27.2",
     "express": "^4.18.1",
     "jsdom": "^20.0.0"
   },

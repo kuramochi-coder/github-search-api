@@ -1,3 +1,5 @@
+const { default: axios } = require("axios");
+
 const search = document.getElementById("search");
 const resultsList = document.getElementById("results-list");
 const form = document.getElementById("form");
@@ -103,7 +105,8 @@ const searchGithub = async (searchText) => {
     let matches;
     if (searchText.length > 0) {
       container.classList.add("progress");
-      const res = await axiosClient.get(`${apiSelected}?q=${searchText}`);
+      // const res = await axiosClient.get(`${apiSelected}?q=${searchText}`);
+      const res = await axios.get(`/api/search/${searchText}`)
 
       const searchResults = res.data.items;
 
