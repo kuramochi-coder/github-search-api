@@ -1,13 +1,12 @@
-const { default: axios } = require("axios");
-
 const search = document.getElementById("search");
 const resultsList = document.getElementById("results-list");
 const form = document.getElementById("form");
 const container = document.getElementById("progress-container");
 const select = document.getElementById("select");
 let optionSelected = "Code";
-const gitHubBaseUrl = "https://api.github.com";
-const accessToken = "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";
+
+const appApiUrl = "http://localhost:8080/api";
+
 let apiSelected;
 
 const SearchOptions = {
@@ -29,43 +28,6 @@ const SearchApi = {
   TOPICS: `/search/topics`,
   USERS: `/search/users`,
 };
-
-const axiosClient = axios.create({
-  baseURL: gitHubBaseUrl,
-  headers: {
-    Accept: "application/vnd.github+json",
-    Authorization: `token ${accessToken}`,
-  },
-});
-
-function APIClientFactory({ method }) {
-  return async function client(path, options) {
-    return axiosClient
-      .request({
-        ...options,
-        method: method,
-        url: path,
-        headers: {
-          ...options?.headers,
-          Authorization: `token ${accessToken}`,
-        },
-      })
-      .then((response) => response.data)
-      .catch((err) => {
-        return err.response.data;
-      });
-  };
-}
-
-function githubSearchApiClient() {
-  return {
-    get: APIClientFactory({ method: "GET" }),
-    post: APIClientFactory({ method: "POST" }),
-    patch: APIClientFactory({ method: "PATCH" }),
-    put: APIClientFactory({ method: "PUT" }),
-    delete: APIClientFactory({ method: "DELETE" }),
-  };
-}
 
 // Search GitHub using the search api.
 const searchGithub = async (searchText) => {
@@ -105,8 +67,7 @@ const searchGithub = async (searchText) => {
     let matches;
     if (searchText.length > 0) {
       container.classList.add("progress");
-      // const res = await axiosClient.get(`${apiSelected}?q=${searchText}`);
-      const res = await axios.get(`/api/search/${searchText}`)
+      const res = await axios.get(`${appApiUrl}${apiSelected}/${searchText}`);
 
       const searchResults = res.data.items;
 
@@ -226,6 +187,10 @@ search.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
     searchGithub(search.value);
   }
+});
+
+search.addEventListener("input", (event) => {
+  searchGithub(search.value);
 });
 
 select.addEventListener("input", () => {
