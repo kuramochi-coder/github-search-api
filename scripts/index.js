@@ -69,6 +69,10 @@ const searchGithub = async (searchText) => {
       container.classList.add("progress");
       const res = await axios.get(`${appApiUrl}${apiSelected}/${searchText}`);
 
+      if (res.data.error) {
+        alert(`Search limit exceeded: ${res.data.error.message}`);
+      }
+
       const searchResults = res.data.items;
 
       // Get matches to the text input.
@@ -93,11 +97,11 @@ const searchGithub = async (searchText) => {
       });
 
       outputHtml(matches);
-      container.classList.remove("progress");
     } else {
       matches = [];
       resultsList.innerHTML = "";
     }
+    container.classList.remove("progress");
   } catch (err) {
     console.log(err);
   }

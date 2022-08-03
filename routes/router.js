@@ -58,8 +58,7 @@ appRouter.get("/api/search/code/:searchText", async (req, res) => {
 
     res.send(result.data);
   } catch (error) {
-    console.log(error);
-    return error.response.data;
+    res.send({ error: error.response.data});
   }
 });
 
@@ -73,8 +72,8 @@ appRouter.get("/api/search/commits/:searchText", async (req, res) => {
 
     res.send(result.data);
   } catch (error) {
-    console.log(error);
-    return error.response.data;
+
+    res.send({ error: error.response.data});
   }
 });
 
@@ -88,8 +87,8 @@ appRouter.get("/api/search/issues/:searchText", async (req, res) => {
 
     res.send(result.data);
   } catch (error) {
-    console.log(error);
-    return error.response.data;
+
+    res.send({ error: error.response.data});
   }
 });
 
@@ -103,8 +102,8 @@ appRouter.get("/api/search/labels/:searchText", async (req, res) => {
 
     return result;
   } catch (error) {
-    console.log(error);
-    return error.response.data;
+
+    res.send({ error: error.response.data});
   }
 });
 
@@ -118,8 +117,8 @@ appRouter.get("/api/search/repositories/:searchText", async (req, res) => {
 
     res.send(result.data);
   } catch (error) {
-    console.log(error);
-    return error.response.data;
+
+    res.send({ error: error.response.data});
   }
 });
 
@@ -133,8 +132,8 @@ appRouter.get("/api/search/topics/:searchText", async (req, res) => {
 
     res.send(result.data);
   } catch (error) {
-    console.log(error);
-    return error.response.data;
+
+    res.send({ error: error.response.data});
   }
 });
 
@@ -148,8 +147,8 @@ appRouter.get("/api/search/users/:searchText", async (req, res) => {
 
     res.send(result.data)
   } catch (error) {
-    console.log(error);
-    return error.response.data;
+
+    res.send({ error: error.response.data});
   }
 });
 
